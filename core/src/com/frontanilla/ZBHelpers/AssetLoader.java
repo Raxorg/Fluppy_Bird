@@ -23,7 +23,7 @@ public class AssetLoader {
     public static int[] modules = new int[2];
     public static int currentModuleIndex = 0;
     public static Player player;
-    public static boolean isPlaying = false;
+    public static boolean isLooping = false;
     // PREFS
     private static Preferences prefs;
 

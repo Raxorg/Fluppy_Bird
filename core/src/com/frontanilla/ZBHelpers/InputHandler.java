@@ -48,10 +48,10 @@ public class InputHandler implements InputProcessor {
         } else if (myWorld.isReady()) {
             myWorld.start();
             myBird.onClick();
-            if (!AssetLoader.isPlaying) {
+            if (!AssetLoader.isLooping) {
                 AssetLoader.currentModuleIndex = 1;
                 AssetLoader.player.play(AssetLoader.modules[AssetLoader.currentModuleIndex], true, true, 0.25f, 0.25f);
-                AssetLoader.isPlaying = true;
+                AssetLoader.isLooping = true;
             }
         } else if (myWorld.isRunning()) {
             myBird.onClick();
