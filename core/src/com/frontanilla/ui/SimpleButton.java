@@ -56,7 +56,7 @@ public class SimpleButton {
 		// It only counts as a touchUp if the button is in a pressed state.
 		if (bounds.contains(screenX, screenY) && isPressed) {
 			isPressed = false;
-			AssetLoader.flap.play();
+			AssetLoader.flap.play(0.5f);
 			return true;
 		}
 		
