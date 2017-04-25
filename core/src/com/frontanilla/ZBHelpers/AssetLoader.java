@@ -1,5 +1,6 @@
 package com.frontanilla.ZBHelpers;
 
+import java.util.Vector;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Sound;
@@ -9,9 +10,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.frontanilla.tanjentxm.Player;
+import com.frontanilla.ZBHelpers.BirdTexture;
 
 public class AssetLoader {
-
+    public static Vector<BirdTexture> birdTextures;
     public static Texture texture, logoTexture;
     public static TextureRegion logo, zbLogo, bg, grass, bird, birdDown,
             birdUp, skullUp, skullDown, bar, playButtonUp, playButtonDown,
@@ -29,6 +31,7 @@ public class AssetLoader {
 
     public static void load() {
 
+        birdTextures = new Vector<BirdTexture>();
         logoTexture = new Texture(Gdx.files.internal("data/logo.png"));
         logoTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
@@ -119,6 +122,13 @@ public class AssetLoader {
         modules[0] = player.loadXM(Gdx.files.internal("data/menu.xm").readBytes(), 0);
         modules[1] = player.loadXM(Gdx.files.internal("data/gameplay.xm").readBytes(), 0);
         currentModuleIndex = 0;
+
+        // custom bird skins
+        addBirdTexture("data/pajaro-stronguista.png",
+                       new int[]{ 0,0, 16,11 },
+                       new int[]{ 17,0, 16,11 },
+                       new int[]{ 34,0, 16,11 });
+        setBirdTexture(0);
     }
 
     public static void setHighScore(int val) {
@@ -144,4 +154,34 @@ public class AssetLoader {
         player.dispose();
     }
 
+    public static void addBirdTexture (String pathToTexture,
+                                       int[] upFrame, int[] midFrame,
+                                       int[] downFrame) {
+        Animation animation;
+        TextureRegion[] newTexture = new TextureRegion[3];
+        Texture birdTexture = new Texture(Gdx.files.internal(pathToTexture));
+        texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest); // ¯\_(ツ)_/¯
+
+        newTexture[0] = new TextureRegion(birdTexture, upFrame[0], upFrame[1],
+                                              upFrame[2], upFrame[3]);
+
+        newTexture[1] = new TextureRegion(birdTexture, midFrame[0], midFrame[1],
+                                              midFrame[2], midFrame[3]);
+
+        newTexture[2] = new TextureRegion(birdTexture, downFrame[0], downFrame[1],
+                                              downFrame[2], downFrame[3]);
+
+        for (int i=0; i<3; i++) { newTexture[i].flip(false, true); }
+
+        animation = new Animation(0.06f, newTexture);
+        animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+
+        birdTextures.addElement(new BirdTexture(animation, newTexture[0], newTexture[1],
+                                                newTexture[2]));
+    }
+
+    public static void setBirdTexture (int index) {
+        AssetLoader.bird = birdTextures.get(index).mid;
+        AssetLoader.birdAnimation = birdTextures.get(index).animation;
+    }
 }
