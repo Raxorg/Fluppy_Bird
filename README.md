@@ -1,5 +1,5 @@
 # Flappy mallku
-** [juego de la asociación con fines educativos.](https://www.facebook.com/AsociacionBolivianaVideojuegos)**
+**[juego de la asociación con fines educativos.](https://www.facebook.com/AsociacionBolivianaVideojuegos)**
 
 Bueno hace unas semanas se fue preparando el taller que lo tenemos como pendiente para impartirlo a estudiantes interesados en aprender sobre cómo desarrollar videojuegos con software libre, el producto de este taller es un juego que denominamos “Flappy Mallku” que les dejo el link de descarga en la parte de abajo con el cual queremos felicitar a todos los profesionales que hicieron posible este videojuego:
 
@@ -9,12 +9,12 @@ Dan ZR
 Gabriel Gallardo Alarcón
 Homar Orozco
 
-** Organizadores: **
+**Organizadores:**
 
 Gerick Toro Rodriguez
 Amilkar Shegrid Contreras Castro
 
-** Fotografía: **
+**Fotografía:**
 
 Ronald Max Davila
 
